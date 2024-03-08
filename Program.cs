@@ -1,4 +1,5 @@
 using Auction.Data;
+using Auction.Data.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,9 @@ namespace Auction
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //service which we created
+            builder.Services.AddScoped<IListingsService, ListingsService> ();
 
             var app = builder.Build();
 
